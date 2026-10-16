@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">مزامنة %1$s/%2$s نقطة</string>
     <string name="riding_background_settings">إعدادات التسجيل في الخلفية</string>
     <string name="riding_background_help">اسمح بالإشعارات للإيقاف المؤقت أو الاستئناف أو الإنهاء من شاشة القفل. إذا توقف التسجيل عند إطفاء الشاشة، اسمح لـ DiPlay بالعمل في الخلفية في إعدادات البطارية.</string>
+    <string name="riding_synced_no_gps">تمت المزامنة · لم يُسجل مسار GPS</string>
+    <string name="riding_sync_goal_required">اضبط هدف ركوب الدراجة في البرنامج المصغر ثم حدّث</string>
+    <string name="riding_sync_overlap">تتداخل أوقات الرحلات · راجع سجلات البرنامج المصغر</string>
+    <string name="riding_sync_deleted">حُذفت في البرنامج المصغر · النسخة المحلية محفوظة</string>
+    <string name="riding_sync_incomplete">لم يكتمل رفع المسار · حدّث للمحاولة مجددًا</string>
+    <string name="riding_sync_no_gps_retry">لا توجد نقاط GPS · حدّث لمزامنة أوقات الرحلة</string>
+    <string name="riding_sync_data_error">بيانات السجل غير متطابقة · النسخة المحلية محفوظة</string>
+    <string name="riding_sync_retry">لم تكتمل المزامنة · حدّث للمحاولة مجددًا</string>
 </resources>

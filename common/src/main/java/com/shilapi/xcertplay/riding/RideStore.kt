@@ -114,6 +114,10 @@ class RideStore(context: Context) : SQLiteOpenHelper(context,
     @Synchronized fun syncError(id: String, code: String, permanent: Boolean = false) {
         writableDatabase.execSQL("UPDATE rides SET sync_state=?,error=? WHERE id=?", arrayOf(if(permanent) "CONFLICT" else "SYNC_ERROR",code.take(80),id))
     }
+    /** Explicit retry keeps points/ACKs and only reopens errors belonging to this verified binding. */
+    @Synchronized fun retryConflicts(deviceId: String, version: Int) {
+        writableDatabase.execSQL("UPDATE rides SET sync_state='PENDING',error='' WHERE device_id=? AND version=? AND sync_state IN ('CONFLICT','SYNC_ERROR')",arrayOf(deviceId,version))
+    }
     @Synchronized fun quarantine(deviceId: String) { writableDatabase.execSQL("UPDATE rides SET sync_state='QUARANTINED',error='device_revoked' WHERE device_id=? AND sync_state!='SYNCED'", arrayOf(deviceId)) }
     companion object {
         @Volatile private var instance: RideStore? = null

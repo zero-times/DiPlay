@@ -33,7 +33,12 @@ class RidingActivity: Activity() {
     private var busy=false
     private var visible=false
     private var bound=false
-    private val poll=object:Runnable {override fun run() {if(visible && !bound) loadBinding(false);if(visible) main.postDelayed(this,5000)}}
+    private val poll=object:Runnable {override fun run() {
+        if(!visible) return
+        if(!bound) loadBinding(false)
+        loadHistory()
+        main.postDelayed(this,2000)
+    }}
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         val root=LinearLayout(this).apply {orientation=LinearLayout.VERTICAL;setPadding(dp(20),dp(16),dp(20),dp(24))}
@@ -100,7 +105,7 @@ class RidingActivity: Activity() {
                         val response=if(snapshot.optString("binding_state")=="BOUND") api.request("/api/v1/riding/devices/${snapshot.getString("device_id")}/verify",snapshot.getString("device_credential"),JSONObject())
                             else api.request("/api/v1/riding/devices/${snapshot.getString("device_id")}/bind-status",snapshot.getString("registration_secret"))
                         merge(snapshot,response);binding.save(snapshot)
-                        if(snapshot.optString("binding_state")=="BOUND") RideRuntime.schedule(this)
+                        if(snapshot.optString("binding_state")=="BOUND") RideRuntime.schedule(this,manualRetry=register)
                     }
                 }
             } catch(error:RideApiError) {
@@ -130,10 +135,10 @@ class RidingActivity: Activity() {
         RideRuntime.io.execute {
             val rides=RideStore.get(this).history()
             main.post {if(!visible)return@post;history.removeAllViews();rides.forEach {ride->
-                val state=when(ride.syncState){"SYNCED"->R.string.riding_synced;"QUARANTINED"->R.string.riding_quarantined;"CONFLICT"->R.string.riding_sync_conflict;"SYNC_ERROR"->R.string.riding_sync_error;else->R.string.riding_pending}
+                val state=RideSyncStatus.text(this,ride)
                 history.addView(TextView(this).apply {textSize=16f;setPadding(0,dp(12),0,dp(12));text=getString(R.string.riding_history_row,
                     DateFormat.getDateTimeInstance(DateFormat.SHORT,DateFormat.SHORT).format(Date(ride.started)),getString(if(ride.direction=="outbound")R.string.riding_outbound else R.string.riding_return),
-                    String.format(Locale.getDefault(),"%.2f",ride.distance/1000),getString(state),ride.ack.toString(),ride.count.toString())})
+                    String.format(Locale.getDefault(),"%.2f",ride.distance/1000),state,ride.ack.toString(),ride.count.toString())})
             }}
         }
     }

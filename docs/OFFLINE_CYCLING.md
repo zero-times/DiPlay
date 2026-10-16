@@ -14,9 +14,11 @@ The standalone debug build uses the same application ID and debug signing key as
 2. In the 百宝格 mini-program, open **我的骑行 → 骑行设备**. Scan the QR code shown by DiPlay or enter its eight-digit code. Codes expire after ten minutes; refresh for a new one.
 3. Wait for **Device bound** on DiPlay. Allow precise location when starting the first ride.
 4. Choose outbound or return. Start, pause, resume and finish work without internet. Points are committed to the local database before upload; finished rides remain in Local rides.
-5. After connectivity returns, DiPlay verifies the device binding and uploads in batches, resuming from the server's acknowledged sequence. The mini-program shows the completed ride in its existing history and route view. An overlapping ride from another source requires attention instead of creating duplicate earnings.
+5. After connectivity returns, DiPlay verifies the device binding and uploads in batches, resuming from the server's acknowledged sequence. The mini-program shows the completed ride in its existing history and route view. An overlapping ride from another source requires attention instead of creating duplicate earnings. A ride without usable GPS still synchronizes its recorded times with zero distance and an empty route.
 
 The optional service uses `https://wechat.aiwanwang.cn`. Binding requires a mini-program account and an existing cycling goal. The binding QR code is scanned **inside** the mini-program; it is not a WeChat launch code.
+
+If a previous attempt shows **Sync needs attention**, tap **Refresh binding / sync** after resolving its reported cause. This rechecks the device binding and retries its retained records using the same session IDs and acknowledged points. It does not retry data from revoked or other account bindings. One conflicting ride does not block later valid rides, and the history refreshes while this screen stays open.
 
 ## Screen off and lock-screen controls
 

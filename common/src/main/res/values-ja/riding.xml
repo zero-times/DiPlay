@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">同期中 %1$s/%2$s 点</string>
     <string name="riding_background_settings">バックグラウンド記録の設定</string>
     <string name="riding_background_help">通知を許可すると、ロック画面から一時停止・再開・終了できます。画面オフで記録が止まる場合は、システムのバッテリー設定で DiPlay のバックグラウンド動作を許可してください。</string>
+    <string name="riding_synced_no_gps">同期済み · GPS ルートなし</string>
+    <string name="riding_sync_goal_required">ミニプログラムで目標を設定してから更新してください</string>
+    <string name="riding_sync_overlap">走行時間が重複しています。ミニプログラムの記録を確認してください</string>
+    <string name="riding_sync_deleted">ミニプログラムで削除済み · 端末の記録は保持</string>
+    <string name="riding_sync_incomplete">ルートの送信が未完了 · 更新して再試行</string>
+    <string name="riding_sync_no_gps_retry">GPS 地点なし · 更新すると走行時刻を同期します</string>
+    <string name="riding_sync_data_error">記録データが一致しません · 端末の記録は保持</string>
+    <string name="riding_sync_retry">同期が未完了 · 更新して再試行</string>
 </resources>

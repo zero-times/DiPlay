@@ -52,8 +52,7 @@ class RidingPanelView(private val context: Context): ScrollView(context) {
             fix.optString("quality")!="GOOD" -> R.string.riding_gps_weak
             else -> R.string.riding_gps_good
         })
-        if(ride?.syncState=="SYNCING") sync.text=context.getString(R.string.riding_sync_progress,ride.ack.toString(),ride.count.toString())
-        else sync.setText(when(ride?.syncState) {"SYNCED"->R.string.riding_synced;"QUARANTINED"->R.string.riding_quarantined;"CONFLICT"->R.string.riding_sync_conflict;"SYNC_ERROR"->R.string.riding_sync_error;else->R.string.riding_pending})
+        sync.text=RideSyncStatus.text(context,ride)
         val key="$bound:${ride?.state}"
         if(controlsKey!=key) {
             controlsKey=key;controls.removeAllViews()

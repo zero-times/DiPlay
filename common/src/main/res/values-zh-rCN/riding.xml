@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">正在同步 %1$s/%2$s 点</string>
     <string name="riding_background_settings">后台运行设置</string>
     <string name="riding_background_help">允许通知后，可在锁屏通知中暂停、继续或结束骑行。若熄屏后记录中断，请在系统电池设置中允许 DiPlay 后台运行。</string>
+    <string name="riding_synced_no_gps">已同步 · 未记录到定位轨迹</string>
+    <string name="riding_sync_goal_required">请先在小程序设置骑行目标，再刷新同步</string>
+    <string name="riding_sync_overlap">骑行时间重叠，请先在小程序核对记录</string>
+    <string name="riding_sync_deleted">已在小程序删除 · 本地记录保留</string>
+    <string name="riding_sync_incomplete">轨迹尚未传完 · 点击刷新重试</string>
+    <string name="riding_sync_no_gps_retry">未采集到定位点 · 点击刷新同步行程时间</string>
+    <string name="riding_sync_data_error">记录数据不一致 · 本地记录保留</string>
+    <string name="riding_sync_retry">同步未完成 · 点击刷新重试</string>
 </resources>

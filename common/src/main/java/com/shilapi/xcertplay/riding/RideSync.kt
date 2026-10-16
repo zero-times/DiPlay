@@ -45,11 +45,12 @@ object RideRuntime {
         schedule(app)
     }
     private val constraints=Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-    fun schedule(context: Context) {
+    fun schedule(context: Context, manualRetry: Boolean = false) {
         runCatching {
-        val manager=WorkManager.getInstance(context)
-        manager.enqueueUniqueWork("riding-sync",ExistingWorkPolicy.APPEND_OR_REPLACE,OneTimeWorkRequestBuilder<RideSyncWorker>().setConstraints(constraints).setBackoffCriteria(BackoffPolicy.EXPONENTIAL,30,TimeUnit.SECONDS).build())
-        manager.enqueueUniquePeriodicWork("riding-sync-fallback",ExistingPeriodicWorkPolicy.KEEP,PeriodicWorkRequestBuilder<RideSyncWorker>(15,TimeUnit.MINUTES).setConstraints(constraints).build())
+            val manager=WorkManager.getInstance(context)
+            manager.enqueueUniqueWork("riding-sync",if(manualRetry) ExistingWorkPolicy.REPLACE else ExistingWorkPolicy.APPEND_OR_REPLACE,
+                OneTimeWorkRequestBuilder<RideSyncWorker>().setInputData(workDataOf("manual_retry" to manualRetry)).setConstraints(constraints).setBackoffCriteria(BackoffPolicy.EXPONENTIAL,30,TimeUnit.SECONDS).build())
+            manager.enqueueUniquePeriodicWork("riding-sync-fallback",ExistingPeriodicWorkPolicy.KEEP,PeriodicWorkRequestBuilder<RideSyncWorker>(15,TimeUnit.MINUTES).setConstraints(constraints).build())
         }.onFailure { android.util.Log.w("DiPlay-Riding","Sync scheduling unavailable; local rides retained",it) }
     }
     fun binding(context: Context): RideBinding = RideBinding.get(context.applicationContext)
@@ -61,7 +62,6 @@ class RideSyncWorker(context: Context, params: WorkerParameters): Worker(context
     companion object { private val SYNC_LOCK=Any() }
     private fun sync(): Result {
         val binding=RideRuntime.binding(applicationContext);val store=RideStore.get(applicationContext)
-        var current: RideSession? = null
         return try {
             val snapshot=binding.read()
             if(snapshot.optString("binding_state")!="BOUND") return Result.success()
@@ -73,23 +73,41 @@ class RideSyncWorker(context: Context, params: WorkerParameters): Worker(context
                 val fresh=binding.read()
                 if(fresh.optString("device_id")==id) { fresh.put("last_verified_at",verified.getLong("last_verified_at"));binding.save(fresh) }
             }
-            for(ride in store.pending()) {
-                if(isStopped) return Result.retry()
-                current=ride
-                if(ride.deviceId!=id || ride.version!=snapshot.getInt("binding_version")) { store.quarantine(ride.deviceId);continue }
-                RideSyncEngine(store,api).upload(ride,credential) {isStopped}
-                if(!ride.active) synchronized(RideBinding::class.java) { val fresh=binding.read();if(fresh.optString("device_id")==id) {fresh.put("last_sync_at",System.currentTimeMillis());binding.save(fresh)} }
-
+            val complete=RideSyncQueue(store,api).uploadPending(id,snapshot.getInt("binding_version"),credential,
+                manualRetry=inputData.getBoolean("manual_retry",false),stopped={isStopped}) { ride ->
+                if(!ride.active) synchronized(RideBinding::class.java) {
+                    val fresh=binding.read()
+                    if(fresh.optString("device_id")==id) {fresh.put("last_sync_at",System.currentTimeMillis());binding.save(fresh)}
+                }
             }
-            Result.success()
+            if(complete) Result.success() else Result.retry()
         } catch(error:RideApiError) {
             if(error.code=="device_revoked" || error.status==401) {
                 synchronized(RideBinding::class.java) { val value=binding.read();value.put("binding_state","REVOKED");binding.save(value);store.quarantine(value.optString("device_id")) }
                 Result.success()
-            } else if(error.status in listOf(400,404,409,410,422)) {
-                current?.let { store.syncError(it.id,error.code,true) };Result.success()
-            } else { current?.let { store.syncError(it.id,"network_error") };Result.retry() }
-        } catch(_:Exception) { current?.let { store.syncError(it.id,"network_error") };Result.retry() }
+            } else Result.retry()
+        } catch(_:Exception) { Result.retry() }
+    }
+}
+
+/** One rejected ride must not prevent the next saved ride from synchronizing. */
+class RideSyncQueue(private val store:RideStore,private val api:RideTransport) {
+    fun uploadPending(deviceId:String,version:Int,credential:String,manualRetry:Boolean=false,
+                      stopped:()->Boolean={false},uploaded:(RideSession)->Unit={}):Boolean {
+        if(manualRetry) store.retryConflicts(deviceId,version)
+        for(ride in store.pending()) {
+            if(stopped()) return false
+            if(ride.deviceId!=deviceId || ride.version!=version) {store.quarantine(ride.deviceId);continue}
+            try {RideSyncEngine(store,api).upload(ride,credential,stopped)}
+            catch(error:RideApiError) {
+                if(error.code=="device_revoked" || error.status==401) throw error
+                val permanent=error.status in listOf(400,404,409,410,422)
+                store.syncError(ride.id,error.code,permanent)
+                if(permanent) continue else return false
+            } catch(_:Exception) {store.syncError(ride.id,"network_error");return false}
+            uploaded(ride)
+        }
+        return true
     }
 }
 

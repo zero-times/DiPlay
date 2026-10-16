@@ -48,4 +48,51 @@ class RideSyncTest {
         RideSyncEngine(store,api).upload(store.latest()!!,"device-secret")
         assertEquals("SYNCED",store.latest()!!.syncState);assertEquals(601L,store.latest()!!.ack)
     }
+
+    @Test fun zeroPointConflictsRetryOnlyOnRequestAndKeepTheSameSession() {
+        val id=store.start("device",2,"outbound",1000);store.finish(5000)
+        store.syncError(id,"invalid_finish",true)
+        val other=store.start("another-device",1,"return",6000);store.finish(7000);store.syncError(other,"invalid_finish",true)
+        val revoked=store.start("revoked-device",1,"return",8000);store.finish(9000);store.quarantine("revoked-device")
+        var requests=0
+        val api=object:RideTransport {
+            override fun request(path:String,token:String,body:JSONObject?):JSONObject {
+                requests++
+                if(path.endsWith("upsert")) assertEquals(id,body!!.getString("local_session_id"))
+                if(path.endsWith("finish")) assertEquals(0,body!!.getInt("point_count"))
+                return JSONObject().put("highest_contiguous_seq",0)
+            }
+        }
+        val queue=RideSyncQueue(store,api)
+        assertTrue(queue.uploadPending("device",2,"credential"));assertEquals(0,requests)
+        assertTrue(queue.uploadPending("device",2,"credential",manualRetry=true))
+        assertEquals(2,requests)
+        assertEquals("SYNCED",store.history().single {it.id==id}.syncState)
+        assertEquals("CONFLICT",store.history().single {it.id==other}.syncState)
+        assertEquals("QUARANTINED",store.history().single {it.id==revoked}.syncState)
+        assertEquals(0L,store.history().single {it.id==id}.count)
+    }
+    @Test fun oneRejectedRideDoesNotBlockTheNextAndManualRetryPreservesAcknowledgedPoints() {
+        val rejected=store.start("device",2,"outbound",1000);store.finish(5000)
+        val good=store.start("device",2,"return",6000)
+        store.append(RidePoint(7000,22.0,113.0,4.0,2.0,provider="gps"));store.finish(8000)
+        store.acknowledge(good,1)
+        val uploads=mutableListOf<String>()
+        val api=object:RideTransport {
+            override fun request(path:String,token:String,body:JSONObject?):JSONObject {
+                if(path.endsWith("upsert")) {
+                    val id=body!!.getString("local_session_id");uploads.add(id)
+                    if(id==rejected) throw RideApiError(409,"ride_overlap")
+                }
+                return JSONObject().put("highest_contiguous_seq",1)
+            }
+        }
+        assertTrue(RideSyncQueue(store,api).uploadPending("device",2,"credential"))
+        assertEquals(listOf(rejected,good),uploads)
+        assertEquals("CONFLICT",store.history().single {it.id==rejected}.syncState)
+        assertEquals("SYNCED",store.history().single {it.id==good}.syncState)
+        store.retryConflicts("device",2)
+        assertEquals(1L,store.history().single {it.id==good}.ack)
+        assertEquals("SYNCED",store.history().single {it.id==good}.syncState)
+    }
 }

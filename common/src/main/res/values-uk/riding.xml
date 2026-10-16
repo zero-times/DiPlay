@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">Синхронізація %1$s/%2$s точок</string>
     <string name="riding_background_settings">Налаштування фонового запису</string>
     <string name="riding_background_help">Дозвольте сповіщення, щоб призупиняти, продовжувати або завершувати поїздку з екрана блокування. Якщо запис зупиняється з вимкненим екраном, дозвольте DiPlay працювати у фоні в налаштуваннях батареї.</string>
+    <string name="riding_synced_no_gps">Синхронізовано · маршрут GPS не записано</string>
+    <string name="riding_sync_goal_required">Налаштуйте мету в мініпрограмі, потім оновіть</string>
+    <string name="riding_sync_overlap">Час поїздок перетинається · перевірте записи в мініпрограмі</string>
+    <string name="riding_sync_deleted">Видалено в мініпрограмі · локальну копію збережено</string>
+    <string name="riding_sync_incomplete">Маршрут завантажено не повністю · оновіть для повтору</string>
+    <string name="riding_sync_no_gps_retry">Немає точок GPS · оновіть для синхронізації часу поїздки</string>
+    <string name="riding_sync_data_error">Дані запису не збігаються · локальну копію збережено</string>
+    <string name="riding_sync_retry">Синхронізацію не завершено · оновіть для повтору</string>
 </resources>

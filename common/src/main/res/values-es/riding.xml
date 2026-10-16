@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">Sincronizando %1$s/%2$s puntos</string>
     <string name="riding_background_settings">Ajustes de grabación en segundo plano</string>
     <string name="riding_background_help">Permite las notificaciones para pausar, reanudar o terminar desde la pantalla de bloqueo. Si la grabación se detiene al apagar la pantalla, permite que DiPlay se ejecute en segundo plano en los ajustes de batería.</string>
+    <string name="riding_synced_no_gps">Sincronizado · sin ruta GPS registrada</string>
+    <string name="riding_sync_goal_required">Configura tu objetivo de ciclismo en el miniprograma y actualiza</string>
+    <string name="riding_sync_overlap">Los horarios se solapan · revisa los registros en el miniprograma</string>
+    <string name="riding_sync_deleted">Eliminado en el miniprograma · copia local conservada</string>
+    <string name="riding_sync_incomplete">Ruta incompleta · actualiza para reintentar</string>
+    <string name="riding_sync_no_gps_retry">Sin puntos GPS · actualiza para sincronizar los horarios</string>
+    <string name="riding_sync_data_error">Los datos no coinciden · copia local conservada</string>
+    <string name="riding_sync_retry">Sincronización incompleta · actualiza para reintentar</string>
 </resources>

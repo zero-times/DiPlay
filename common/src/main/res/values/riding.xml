@@ -44,4 +44,12 @@
     <string name="riding_sync_progress">Syncing %1$s/%2$s points</string>
     <string name="riding_background_settings">Background recording settings</string>
     <string name="riding_background_help">Allow notifications to pause, resume or finish from the lock screen. If recording stops when the screen is off, allow DiPlay to run in the background in system battery settings.</string>
+    <string name="riding_synced_no_gps">Synced · no GPS route recorded</string>
+    <string name="riding_sync_goal_required">Set up your cycling goal in the mini-program, then refresh</string>
+    <string name="riding_sync_overlap">Ride times overlap · review your mini-program records</string>
+    <string name="riding_sync_deleted">Deleted in the mini-program · local copy retained</string>
+    <string name="riding_sync_incomplete">Route upload incomplete · refresh to retry</string>
+    <string name="riding_sync_no_gps_retry">No GPS points · refresh to sync the ride times</string>
+    <string name="riding_sync_data_error">Ride data does not match · local copy retained</string>
+    <string name="riding_sync_retry">Sync not completed · refresh to retry</string>
 </resources>
