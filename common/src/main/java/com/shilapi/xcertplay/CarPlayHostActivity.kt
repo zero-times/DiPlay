@@ -2112,6 +2112,23 @@ class CarPlayHostActivity : ComponentActivity() {
         }
         contents.addView(sidePanelBattery)
         contents.addView(buildSidePanelTyres())
+        panel.removeView(contents)
+        val switcher = Button(this).apply { minHeight = dp(48) }
+        val stack = android.widget.FrameLayout(this)
+        val riding = com.shilapi.xcertplay.riding.RidingPanelView(this)
+        stack.addView(contents, android.widget.FrameLayout.LayoutParams(-1, -1))
+        stack.addView(riding, android.widget.FrameLayout.LayoutParams(-1, -1))
+        val prefs = getSharedPreferences("diplay_side_panel", MODE_PRIVATE)
+        var showRiding = prefs.getBoolean("riding", false)
+        fun updateMode() {
+            riding.visibility = if (showRiding) View.VISIBLE else View.GONE
+            contents.visibility = if (showRiding) View.GONE else View.VISIBLE
+            switcher.setText(if (showRiding) R.string.riding_vehicle_panel else R.string.riding_title)
+        }
+        switcher.setOnClickListener { showRiding = !showRiding; prefs.edit().putBoolean("riding", showRiding).apply(); updateMode() }
+        panel.addView(switcher, LinearLayout.LayoutParams(-1, -2))
+        panel.addView(stack, LinearLayout.LayoutParams(-1, 0, 1f))
+        updateMode()
         return panel
     }
 

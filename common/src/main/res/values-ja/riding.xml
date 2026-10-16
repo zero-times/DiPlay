@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">サイクリング · デバイスと記録</string>
+    <string name="riding_title">サイクリング</string>
+    <string name="riding_back">DiPlay に戻る</string>
+    <string name="riding_bind_required">デバイスを連携して開始</string>
+    <string name="riding_ready">出発できます</string>
+    <string name="riding_recording">走行記録中</string>
+    <string name="riding_paused">一時停止中</string>
+    <string name="riding_saved">この端末に保存済み</string>
+    <string name="riding_pause">一時停止</string>
+    <string name="riding_resume">再開</string>
+    <string name="riding_finish">終了</string>
+    <string name="riding_start_outbound">往路を開始</string>
+    <string name="riding_start_return">復路を開始</string>
+    <string name="riding_outbound">往路</string>
+    <string name="riding_return">復路</string>
+    <string name="riding_average">平均 %1$s · 最高 %2$s km/h</string>
+    <string name="riding_gps_wait">GPS 待機中 · 端末に保存</string>
+    <string name="riding_local">端末に保存</string>
+    <string name="riding_synced">同期済み</string>
+    <string name="riding_pending">同期待ち</string>
+    <string name="riding_quarantined">連携解除 · 端末の記録は保持</string>
+    <string name="riding_sync_conflict">同期の確認が必要 · 記録保持</string>
+    <string name="riding_sync_error">同期できません · 後で再試行</string>
+    <string name="riding_manage">デバイスと履歴</string>
+    <string name="riding_refresh">連携・同期を更新</string>
+    <string name="riding_bound">連携済み · オフライン走行可能</string>
+    <string name="riding_scan_instruction">ミニプログラムのデバイス画面でスキャンするかコードを入力してください。</string>
+    <string name="riding_qr_description">デバイス連携用 QR コード</string>
+    <string name="riding_network_error">サーバーに接続できません。端末の記録は保持されます。</string>
+    <string name="riding_permission_title">走行ルートを記録</string>
+    <string name="riding_permission_body">正確な位置情報を許可すると、CarPlay 表示中も走行ルートを記録します。</string>
+    <string name="riding_allow">位置情報を許可</string>
+    <string name="riding_service_error">記録を開始できません。位置情報の権限を確認してください。</string>
+    <string name="riding_history">端末の走行履歴</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s km · %4$s · %5$s/%6$s 点</string>
+    <string name="riding_rebind">再連携</string>
+    <string name="riding_rebind_body">未同期の記録は元の連携に保持され、別のアカウントには送信されません。</string>
+    <string name="riding_finish_first">現在の走行を終了してから再連携してください。</string>
+    <string name="riding_vehicle_panel">時計と車両</string>
+    <string name="riding_gps_weak">GPS · 精度低下</string>
+    <string name="riding_gps_good">GPS · 端末に記録中</string>
+    <string name="riding_sync_progress">同期中 %1$s/%2$s 点</string>
+    <string name="riding_background_settings">バックグラウンド記録の設定</string>
+    <string name="riding_background_help">通知を許可すると、ロック画面から一時停止・再開・終了できます。画面オフで記録が止まる場合は、システムのバッテリー設定で DiPlay のバックグラウンド動作を許可してください。</string>
+</resources>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">骑行 · 设备与记录</string>
+    <string name="riding_title">骑行</string>
+    <string name="riding_back">返回 DiPlay</string>
+    <string name="riding_bind_required">绑定设备后开始骑行</string>
+    <string name="riding_ready">准备出发</string>
+    <string name="riding_recording">骑行记录中</string>
+    <string name="riding_paused">骑行已暂停</string>
+    <string name="riding_saved">骑行已保存到本机</string>
+    <string name="riding_pause">暂停</string>
+    <string name="riding_resume">继续骑行</string>
+    <string name="riding_finish">结束骑行</string>
+    <string name="riding_start_outbound">开始去程</string>
+    <string name="riding_start_return">开始返程</string>
+    <string name="riding_outbound">去程</string>
+    <string name="riding_return">返程</string>
+    <string name="riding_average">均速 %1$s · 最高 %2$s km/h</string>
+    <string name="riding_gps_wait">等待 GPS 定位 · 本机记录中</string>
+    <string name="riding_local">本机保存</string>
+    <string name="riding_synced">已同步</string>
+    <string name="riding_pending">等待同步</string>
+    <string name="riding_quarantined">设备已解绑 · 本地记录保留</string>
+    <string name="riding_sync_conflict">同步待处理 · 本地记录保留</string>
+    <string name="riding_sync_error">同步暂不可用 · 稍后自动重试</string>
+    <string name="riding_manage">设备与历史记录</string>
+    <string name="riding_refresh">刷新绑定与同步</string>
+    <string name="riding_bound">设备已绑定 · 可离线骑行</string>
+    <string name="riding_scan_instruction">在小程序「骑行设备」中扫码或输入绑定码。</string>
+    <string name="riding_qr_description">设备绑定二维码</string>
+    <string name="riding_network_error">暂时无法连接服务器，本地骑行记录会保留。</string>
+    <string name="riding_permission_title">记录骑行轨迹</string>
+    <string name="riding_permission_body">允许精确定位，用于记录骑行线路；切换到 CarPlay 后也会继续记录。</string>
+    <string name="riding_allow">允许定位</string>
+    <string name="riding_service_error">无法开始记录，请检查定位权限后重试。</string>
+    <string name="riding_history">本机骑行记录</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s km · %4$s · %5$s/%6$s 点</string>
+    <string name="riding_rebind">重新绑定</string>
+    <string name="riding_rebind_body">原设备未同步记录会保留，不会上传到新绑定账号。</string>
+    <string name="riding_finish_first">请先结束当前骑行，再重新绑定。</string>
+    <string name="riding_vehicle_panel">时钟与车辆</string>
+    <string name="riding_gps_weak">GPS 定位不稳定</string>
+    <string name="riding_gps_good">GPS 正常 · 本机记录中</string>
+    <string name="riding_sync_progress">正在同步 %1$s/%2$s 点</string>
+    <string name="riding_background_settings">后台运行设置</string>
+    <string name="riding_background_help">允许通知后，可在锁屏通知中暂停、继续或结束骑行。若熄屏后记录中断，请在系统电池设置中允许 DiPlay 后台运行。</string>
+</resources>

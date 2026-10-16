@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">Велосипед · Пристрої та поїздки</string>
+    <string name="riding_title">Велосипед</string>
+    <string name="riding_back">Назад до DiPlay</string>
+    <string name="riding_bind_required">Прив’яжіть пристрій для поїздки</string>
+    <string name="riding_ready">Готовий до поїздки</string>
+    <string name="riding_recording">Запис поїздки</string>
+    <string name="riding_paused">Поїздку призупинено</string>
+    <string name="riding_saved">Поїздку збережено на пристрої</string>
+    <string name="riding_pause">Пауза</string>
+    <string name="riding_resume">Продовжити</string>
+    <string name="riding_finish">Завершити поїздку</string>
+    <string name="riding_start_outbound">Почати шлях туди</string>
+    <string name="riding_start_return">Почати зворотний шлях</string>
+    <string name="riding_outbound">Туди</string>
+    <string name="riding_return">Назад</string>
+    <string name="riding_average">СЕР %1$s · МАКС %2$s км/год</string>
+    <string name="riding_gps_wait">Очікування GPS · локальний запис</string>
+    <string name="riding_local">ЛОКАЛЬНО · на пристрої</string>
+    <string name="riding_synced">ХМАРА · синхронізовано</string>
+    <string name="riding_pending">ХМАРА · очікування синхронізації</string>
+    <string name="riding_quarantined">Пристрій відв’язано · записи збережено</string>
+    <string name="riding_sync_conflict">Перевірте синхронізацію · запис збережено</string>
+    <string name="riding_sync_error">Синхронізація недоступна · повтор пізніше</string>
+    <string name="riding_manage">Пристрої та історія</string>
+    <string name="riding_refresh">Оновити прив’язку та синхронізацію</string>
+    <string name="riding_bound">Пристрій прив’язано · поїздки без мережі</string>
+    <string name="riding_scan_instruction">Відкрийте пристрої велосипеда в мініпрограмі та відскануйте або введіть код.</string>
+    <string name="riding_qr_description">QR-код прив’язки пристрою</string>
+    <string name="riding_network_error">Немає зв’язку із сервером. Записи залишаються на пристрої.</string>
+    <string name="riding_permission_title">Запис маршруту</string>
+    <string name="riding_permission_body">Дозвольте точне місцеположення для запису маршруту, зокрема під час CarPlay.</string>
+    <string name="riding_allow">Дозволити геолокацію</string>
+    <string name="riding_service_error">Не вдалося почати запис. Перевірте дозвіл геолокації.</string>
+    <string name="riding_history">Поїздки на пристрої</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s км · %4$s · %5$s/%6$s точок</string>
+    <string name="riding_rebind">Прив’язати знову</string>
+    <string name="riding_rebind_body">Несинхронізовані записи залишаться у попередній прив’язці й не надійдуть іншому акаунту.</string>
+    <string name="riding_finish_first">Завершіть поточну поїздку перед повторною прив’язкою.</string>
+    <string name="riding_vehicle_panel">Годинник і автомобіль</string>
+    <string name="riding_gps_weak">GPS · низька точність</string>
+    <string name="riding_gps_good">GPS · локальний запис</string>
+    <string name="riding_sync_progress">Синхронізація %1$s/%2$s точок</string>
+    <string name="riding_background_settings">Налаштування фонового запису</string>
+    <string name="riding_background_help">Дозвольте сповіщення, щоб призупиняти, продовжувати або завершувати поїздку з екрана блокування. Якщо запис зупиняється з вимкненим екраном, дозвольте DiPlay працювати у фоні в налаштуваннях батареї.</string>
+</resources>

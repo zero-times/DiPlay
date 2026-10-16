@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">ركوب الدراجة · الأجهزة والرحلات</string>
+    <string name="riding_title">ركوب الدراجة</string>
+    <string name="riding_back">العودة إلى DiPlay</string>
+    <string name="riding_bind_required">اربط الجهاز لبدء الرحلة</string>
+    <string name="riding_ready">جاهز للانطلاق</string>
+    <string name="riding_recording">جارٍ تسجيل الرحلة</string>
+    <string name="riding_paused">الرحلة متوقفة مؤقتًا</string>
+    <string name="riding_saved">حُفظت الرحلة على الجهاز</string>
+    <string name="riding_pause">إيقاف مؤقت</string>
+    <string name="riding_resume">متابعة</string>
+    <string name="riding_finish">إنهاء الرحلة</string>
+    <string name="riding_start_outbound">بدء الذهاب</string>
+    <string name="riding_start_return">بدء العودة</string>
+    <string name="riding_outbound">ذهاب</string>
+    <string name="riding_return">عودة</string>
+    <string name="riding_average">المتوسط %1$s · الأقصى %2$s كم/س</string>
+    <string name="riding_gps_wait">بانتظار GPS · حفظ محلي</string>
+    <string name="riding_local">محلي · محفوظ على الجهاز</string>
+    <string name="riding_synced">السحابة · تمت المزامنة</string>
+    <string name="riding_pending">السحابة · بانتظار المزامنة</string>
+    <string name="riding_quarantined">الجهاز غير مرتبط · السجلات المحلية محفوظة</string>
+    <string name="riding_sync_conflict">تحتاج المزامنة للمراجعة · السجل محفوظ</string>
+    <string name="riding_sync_error">المزامنة غير متاحة · ستتم إعادة المحاولة</string>
+    <string name="riding_manage">الأجهزة والسجل</string>
+    <string name="riding_refresh">تحديث الربط والمزامنة</string>
+    <string name="riding_bound">الجهاز مرتبط · الرحلات دون اتصال متاحة</string>
+    <string name="riding_scan_instruction">افتح أجهزة الدراجة في البرنامج المصغّر لمسح الرمز أو إدخاله.</string>
+    <string name="riding_qr_description">رمز ربط الجهاز</string>
+    <string name="riding_network_error">تعذر الاتصال بالخادم. تبقى الرحلات على الجهاز.</string>
+    <string name="riding_permission_title">تسجيل المسار</string>
+    <string name="riding_permission_body">اسمح بالموقع الدقيق لتسجيل المسار أثناء الرحلة، حتى عند عرض CarPlay.</string>
+    <string name="riding_allow">السماح بالموقع</string>
+    <string name="riding_service_error">تعذر بدء التسجيل. تحقق من إذن الموقع وحاول مجددًا.</string>
+    <string name="riding_history">الرحلات المحلية</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s كم · %4$s · %5$s/%6$s نقطة</string>
+    <string name="riding_rebind">الربط مجددًا</string>
+    <string name="riding_rebind_body">تبقى الرحلات غير المتزامنة مع الربط السابق ولن تُرسل إلى حساب آخر.</string>
+    <string name="riding_finish_first">أنهِ الرحلة الحالية قبل الربط مجددًا.</string>
+    <string name="riding_vehicle_panel">الساعة والمركبة</string>
+    <string name="riding_gps_weak">GPS · دقة منخفضة</string>
+    <string name="riding_gps_good">GPS · تسجيل محلي</string>
+    <string name="riding_sync_progress">مزامنة %1$s/%2$s نقطة</string>
+    <string name="riding_background_settings">إعدادات التسجيل في الخلفية</string>
+    <string name="riding_background_help">اسمح بالإشعارات للإيقاف المؤقت أو الاستئناف أو الإنهاء من شاشة القفل. إذا توقف التسجيل عند إطفاء الشاشة، اسمح لـ DiPlay بالعمل في الخلفية في إعدادات البطارية.</string>
+</resources>

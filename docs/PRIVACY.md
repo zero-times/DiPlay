@@ -1,6 +1,8 @@
 # Privacy and diagnostics
 
-DiPlay's product flow uses local authentication and a direct USB/Wi-Fi connection to the iPhone. No account, remote authentication service or automatic diagnostic upload is used. The iPhone's CarPlay apps have their own internet and privacy behavior.
+DiPlay's core CarPlay flow uses local authentication and a direct USB/Wi-Fi connection to the iPhone. No account, remote authentication service or automatic diagnostic upload is used. The iPhone's CarPlay apps have their own internet and privacy behavior.
+
+The optional [offline cycling module](OFFLINE_CYCLING.md) pairs with a 百宝格 mini-program account. After you bind a device and start a ride, it stores precise coordinates and timestamps locally and automatically synchronizes rides over HTTPS to `wechat.aiwanwang.cn` when internet returns. The account owner can revoke the device in the mini-program. Cycling credentials and raw points are kept in no-backup app storage; the lock-screen notification contains only recording state and controls. Core CarPlay remains independent of this optional binding.
 
 The head unit stores app preferences, paired-device selections, pairing data and bounded diagnostic logs in app storage. Authentication and pairing material are kept out of Android backup. Uninstalling removes app-private data; exported reports in Downloads remain until you delete them.
 

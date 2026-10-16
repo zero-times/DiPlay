@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">Ciclismo · Dispositivos y rutas</string>
+    <string name="riding_title">Ciclismo</string>
+    <string name="riding_back">Volver a DiPlay</string>
+    <string name="riding_bind_required">Vincula el dispositivo para empezar</string>
+    <string name="riding_ready">Listo para salir</string>
+    <string name="riding_recording">Grabando ruta</string>
+    <string name="riding_paused">Ruta en pausa</string>
+    <string name="riding_saved">Ruta guardada en el dispositivo</string>
+    <string name="riding_pause">Pausar</string>
+    <string name="riding_resume">Continuar</string>
+    <string name="riding_finish">Finalizar ruta</string>
+    <string name="riding_start_outbound">Iniciar ida</string>
+    <string name="riding_start_return">Iniciar vuelta</string>
+    <string name="riding_outbound">Ida</string>
+    <string name="riding_return">Vuelta</string>
+    <string name="riding_average">MEDIA %1$s · MÁX %2$s km/h</string>
+    <string name="riding_gps_wait">Esperando GPS · guardado local</string>
+    <string name="riding_local">LOCAL · guardado en dispositivo</string>
+    <string name="riding_synced">NUBE · sincronizado</string>
+    <string name="riding_pending">NUBE · pendiente de sincronizar</string>
+    <string name="riding_quarantined">Dispositivo desvinculado · rutas conservadas</string>
+    <string name="riding_sync_conflict">Revisa la sincronización · ruta conservada</string>
+    <string name="riding_sync_error">Sin conexión · se reintentará</string>
+    <string name="riding_manage">Dispositivos e historial</string>
+    <string name="riding_refresh">Actualizar vínculo y sincronización</string>
+    <string name="riding_bound">Dispositivo vinculado · rutas sin conexión</string>
+    <string name="riding_scan_instruction">Escanea o introduce el código en Dispositivos de ciclismo del mini-programa.</string>
+    <string name="riding_qr_description">Código QR para vincular dispositivo</string>
+    <string name="riding_network_error">No se pudo conectar. Las rutas permanecen en el dispositivo.</string>
+    <string name="riding_permission_title">Graba tu ruta</string>
+    <string name="riding_permission_body">Permite la ubicación precisa para grabar la ruta, también al usar CarPlay.</string>
+    <string name="riding_allow">Permitir ubicación</string>
+    <string name="riding_service_error">No se pudo grabar. Revisa el permiso de ubicación.</string>
+    <string name="riding_history">Rutas locales</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s km · %4$s · %5$s/%6$s puntos</string>
+    <string name="riding_rebind">Volver a vincular</string>
+    <string name="riding_rebind_body">Las rutas pendientes conservan el vínculo anterior y no se enviarán a otra cuenta.</string>
+    <string name="riding_finish_first">Finaliza la ruta actual antes de volver a vincular.</string>
+    <string name="riding_vehicle_panel">Reloj y vehículo</string>
+    <string name="riding_gps_weak">GPS · baja precisión</string>
+    <string name="riding_gps_good">GPS · grabación local</string>
+    <string name="riding_sync_progress">Sincronizando %1$s/%2$s puntos</string>
+    <string name="riding_background_settings">Ajustes de grabación en segundo plano</string>
+    <string name="riding_background_help">Permite las notificaciones para pausar, reanudar o terminar desde la pantalla de bloqueo. Si la grabación se detiene al apagar la pantalla, permite que DiPlay se ejecute en segundo plano en los ajustes de batería.</string>
+</resources>

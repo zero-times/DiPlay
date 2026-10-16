@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_riding">Cycling · Devices and rides</string>
+    <string name="riding_title">Cycling</string>
+    <string name="riding_back">Back to DiPlay</string>
+    <string name="riding_bind_required">Bind a device to start riding</string>
+    <string name="riding_ready">Ready to ride</string>
+    <string name="riding_recording">Recording ride</string>
+    <string name="riding_paused">Ride paused</string>
+    <string name="riding_saved">Ride saved on this device</string>
+    <string name="riding_pause">Pause</string>
+    <string name="riding_resume">Resume</string>
+    <string name="riding_finish">Finish ride</string>
+    <string name="riding_start_outbound">Start outbound</string>
+    <string name="riding_start_return">Start return</string>
+    <string name="riding_outbound">Outbound</string>
+    <string name="riding_return">Return</string>
+    <string name="riding_average">AVG %1$s · MAX %2$s km/h</string>
+    <string name="riding_gps_wait">Waiting for GPS · saved locally</string>
+    <string name="riding_local">LOCAL · saved on device</string>
+    <string name="riding_synced">CLOUD · synced</string>
+    <string name="riding_pending">CLOUD · waiting for sync</string>
+    <string name="riding_quarantined">Device unbound · local rides retained</string>
+    <string name="riding_sync_conflict">Sync needs attention · local ride retained</string>
+    <string name="riding_sync_error">Sync unavailable · will retry</string>
+    <string name="riding_manage">Devices and history</string>
+    <string name="riding_refresh">Refresh binding / sync</string>
+    <string name="riding_bound">Device bound · offline riding available</string>
+    <string name="riding_scan_instruction">Open Cycling devices in the mini-program to scan or enter this code.</string>
+    <string name="riding_qr_description">Device binding QR code</string>
+    <string name="riding_network_error">Unable to reach server. Saved rides remain on this device.</string>
+    <string name="riding_permission_title">Record your route</string>
+    <string name="riding_permission_body">Allow precise location to record your route while riding, including when CarPlay is in front.</string>
+    <string name="riding_allow">Allow location</string>
+    <string name="riding_service_error">Unable to start recording. Check location permission and try again.</string>
+    <string name="riding_history">Local rides</string>
+    <string name="riding_history_row">%1$s · %2$s\n%3$s km · %4$s · %5$s/%6$s points</string>
+    <string name="riding_rebind">Bind again</string>
+    <string name="riding_rebind_body">Existing unsynced rides stay with the previous binding and will not be sent to another account.</string>
+    <string name="riding_finish_first">Finish the current ride before binding again.</string>
+    <string name="riding_vehicle_panel">Clock and vehicle</string>
+    <string name="riding_gps_weak">GPS · low accuracy</string>
+    <string name="riding_gps_good">GPS · recording locally</string>
+    <string name="riding_sync_progress">Syncing %1$s/%2$s points</string>
+    <string name="riding_background_settings">Background recording settings</string>
+    <string name="riding_background_help">Allow notifications to pause, resume or finish from the lock screen. If recording stops when the screen is off, allow DiPlay to run in the background in system battery settings.</string>
+</resources>

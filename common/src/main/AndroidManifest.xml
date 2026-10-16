@@ -35,7 +35,12 @@
             <data android:mimeType="*/*" />
         </intent>
     </queries>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application>
+        <activity android:name="com.shilapi.xcertplay.riding.RidingActivity" android:exported="false" android:theme="@style/Theme.Xcertplay" />
+        <service android:name="com.shilapi.xcertplay.riding.RideForegroundService" android:exported="false" android:foregroundServiceType="location" />
         <provider
             android:name="com.shilapi.xcertplay.CrashRecordInstaller"
             android:authorities="${applicationId}.crash-record"
