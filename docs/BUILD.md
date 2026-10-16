@@ -129,7 +129,9 @@ DIPLAY_AUTH_ASSETS_DIR=/absolute/path/to/runtime-assets ./gradlew :mobile:assemb
 ```
 
 The task stops if either required file is absent or empty.
-Its APK output is `mobile/build/outputs/apk/debug/mobile-debug.apk`.
+Its verified standalone APK output is `mobile/build/outputs/apk/standalone/mobile-standalone-debug.apk`.
+The task checks that both packaged authentication files match the selected local inputs.
+Ordinary CI may later rebuild `debug/mobile-debug.apk` without authentication; use the separate standalone output for installation.
 Check both files in the APK against your selected local inputs:
 
 - `assets/offline-mfi/identity.pk8`.

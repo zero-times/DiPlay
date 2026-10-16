@@ -2,6 +2,12 @@
 
 This module is for an Android phone mounted on a bicycle. It records independently of CarPlay and is available in **Advanced → Experimental display → Cycling · Devices and rides** and the side panel. Use the existing side-panel size setting for a one-third riding panel.
 
+## Install a complete build
+
+For cycling alongside standalone CarPlay, build `:mobile:assembleStandaloneDebug` with the runtime authentication input described in [Build from source](BUILD.md#build-a-standalone-car-test-apk). Install `mobile/build/outputs/apk/standalone/mobile-standalone-debug.apk`. The ordinary source-only CI APK lacks CarPlay authentication and cannot make an independent iPhone connection.
+
+The standalone debug build uses the same application ID and debug signing key as the source debug build. Install it over that build to preserve settings and local rides. A release app has a different application ID and signing key; it is not an in-place update for the debug app.
+
 ## Bind once, record offline
 
 1. While online, open Cycling and tap **Refresh binding / sync**.

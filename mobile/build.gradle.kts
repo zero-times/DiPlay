@@ -1,3 +1,5 @@
+import java.util.zip.ZipFile
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
@@ -113,8 +115,34 @@ val verifyStandaloneAuthentication by tasks.registering {
     }
 }
 tasks.named("preBuild") { mustRunAfter(verifyStandaloneAuthentication) }
+// Keep the installable standalone package separate from identity-free CI output.
+val sourceDebugApk = layout.buildDirectory.file("outputs/apk/debug/mobile-debug.apk")
+val standaloneDebugApk = layout.buildDirectory.file("outputs/apk/standalone/mobile-standalone-debug.apk")
 tasks.register("assembleStandaloneDebug") {
     group = "build"
-    description = "Build a standalone car-test APK with explicitly provisioned authentication."
+    description = "Build and verify a standalone car-test APK with explicitly provisioned authentication."
     dependsOn(verifyStandaloneAuthentication, "assembleDebug")
+    val sourceApk = sourceDebugApk
+    val targetApk = standaloneDebugApk
+    val authenticationDirectory = localAuthenticationAssets
+    inputs.file(sourceApk)
+    outputs.file(targetApk)
+    doLast {
+        val directory = checkNotNull(authenticationDirectory)
+        ZipFile(sourceApk.get().asFile).use { apk ->
+            for (name in listOf("identity.pk8", "certificate.p7b")) {
+                val entry = checkNotNull(apk.getEntry("assets/offline-mfi/$name")) {
+                    "Standalone APK is missing an authentication asset"
+                }
+                check(apk.getInputStream(entry).use { it.readBytes() }
+                    .contentEquals(directory.resolve("offline-mfi/$name").readBytes())) {
+                    "Packaged authentication does not match the selected local input"
+                }
+            }
+        }
+        val output = targetApk.get().asFile
+        output.parentFile.mkdirs()
+        sourceApk.get().asFile.copyTo(output, overwrite = true)
+        logger.lifecycle("Verified standalone APK: ${output.absolutePath}")
+    }
 }
